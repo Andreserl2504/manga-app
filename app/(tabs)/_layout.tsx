@@ -1,10 +1,14 @@
 import { Tabs } from 'expo-router'
 import React from 'react'
-import { TabBarIcon } from '@/components/navigation/TabBarIcon'
+import {
+  TabBarIcon,
+  TabBarIconFeather
+} from '@/components/navigation/TabBarIcon'
 import { Colors } from '@/constants/Colors'
 import { useColorScheme } from '@/hooks/useColorScheme'
 import { useReactQueryDevTools } from '@dev-plugins/react-query'
 import { QueryClient } from '@tanstack/react-query'
+import Feather from '@expo/vector-icons/Feather'
 
 const queryClient = new QueryClient()
 
@@ -22,11 +26,13 @@ export default function TabLayout() {
       <Tabs.Screen
         name='index'
         options={{
-          title: 'Home',
+          title: 'Library',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? 'home' : 'home-outline'}
+              name={focused ? 'book' : 'book-outline'}
+              size={20}
               color={color}
+              className=''
             />
           )
         }}
@@ -37,7 +43,8 @@ export default function TabLayout() {
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? 'code-slash' : 'code-slash-outline'}
+              name={focused ? 'compass-sharp' : 'compass-outline'}
+              size={22}
               color={color}
             />
           )
