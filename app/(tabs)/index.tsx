@@ -1,9 +1,12 @@
-import { View, Text } from 'react-native'
+import { View, Text, useColorScheme } from 'react-native'
+import { useEffect } from 'react'
 
 export default function App() {
-  return (
-    <View>
-      <Text className=' bg-red-600'>hi1</Text>
-    </View>
-  )
+  const colorScheme = useColorScheme()
+
+  useEffect(() => {
+    console.log(colorScheme)
+  }, [])
+
+  return <View></View>
 }

@@ -3,8 +3,9 @@ import React from 'react'
 import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 import { Colors } from '@/constants/Colors'
 import { useColorScheme } from '@/hooks/useColorScheme'
-import { View } from 'react-native'
+import { View, TextInput } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
@@ -18,6 +19,20 @@ export default function TabLayout() {
         height: '100%'
       }}
     >
+      <View>
+        <View>
+          <View>
+            <TextInput
+              className={
+                colorScheme == 'dark'
+                  ? 'color-dark-text bg-dark-secondBackground rounded-full m-5 p-4 pl-6'
+                  : 'color-light-text bg-light-secondBackground rounded-full m-5 p-4 pl-6'
+              }
+              placeholder='Search Manga'
+            />
+          </View>
+        </View>
+      </View>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
