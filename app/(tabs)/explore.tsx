@@ -1,5 +1,5 @@
 import { useColorScheme } from '@/hooks/useColorScheme'
-import { View, Text, Pressable, ScrollView } from 'react-native'
+import { View, Text, Pressable, ScrollView, Image } from 'react-native'
 import { useScrapping } from '@/hooks/useTuMangaOnline'
 
 export default function TabTwoScreen() {
@@ -31,6 +31,7 @@ export default function TabTwoScreen() {
     }
   ]
   const { data, isLoading } = useScrapping()
+  // console.log(data)
   return (
     <>
       <View
@@ -65,7 +66,30 @@ export default function TabTwoScreen() {
         </ScrollView>
       </View>
       <ScrollView>
-        <Text className=' color-white'>{!isLoading ? data : 'Loading...'}</Text>
+        <View className='flex flex-wrap flex-row justify-center py-5 gap-5'>
+          {!isLoading
+            ? data?.map((e) => (
+                <>
+                  <View key={e.title} className='relative'>
+                    <Image
+                      source={{ uri: e.thumbnail }}
+                      width={110}
+                      height={190}
+                      className={' rounded-md'}
+                    />
+                    <Text
+                      className={
+                        'absolute color-light-text bg-light-border m-1 rounded-md px-2'
+                      }
+                    >
+                      {e.type}
+                    </Text>
+                    <Text className={'absolute bottom-0'}>{e.title}</Text>
+                  </View>
+                </>
+              ))
+            : <Text>Loading...</Text>}
+        </View>
       </ScrollView>
     </>
   )
