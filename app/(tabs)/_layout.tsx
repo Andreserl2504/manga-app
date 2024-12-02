@@ -3,7 +3,7 @@ import React from 'react'
 import { TabBarIcon } from '@/components/navigation/TabBarIcon'
 import { Colors } from '@/constants/Colors'
 import { useColorScheme } from '@/hooks/useColorScheme'
-import { View, TextInput } from 'react-native'
+import { View, TextInput, Text } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 
@@ -57,6 +57,19 @@ export default function TabLayout() {
           name='explore'
           options={{
             title: 'Explore',
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon
+                name={focused ? 'compass-sharp' : 'compass-outline'}
+                size={22}
+                color={color}
+              />
+            )
+          }}
+        />
+        <Tabs.Screen
+          name='more'
+          options={{
+            title: 'More',
             tabBarIcon: ({ color, focused }) => (
               <TabBarIcon
                 name={focused ? 'compass-sharp' : 'compass-outline'}

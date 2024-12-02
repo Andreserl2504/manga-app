@@ -4,9 +4,5 @@ import { useEffect } from 'react'
 export default function App() {
   const colorScheme = useColorScheme()
 
-  useEffect(() => {
-    console.log(colorScheme)
-  }, [])
-
   return <View></View>
 }

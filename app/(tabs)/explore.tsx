@@ -1,6 +1,7 @@
 import { useColorScheme } from '@/hooks/useColorScheme'
 import { View, Text, Pressable, ScrollView, Image } from 'react-native'
 import { useScrapping } from '@/hooks/useTuMangaOnline'
+import { Link } from 'expo-router'
 
 export default function TabTwoScreen() {
   const colorScheme = useColorScheme()
@@ -67,9 +68,10 @@ export default function TabTwoScreen() {
       </View>
       <ScrollView>
         <View className='flex flex-wrap flex-row justify-center py-5 gap-5'>
-          {!isLoading
-            ? data?.map((e) => (
-                <>
+          {!isLoading ? (
+            data?.map((e) => (
+              <>
+                <Link href={'/manga'}>
                   <View key={e.title} className='relative'>
                     <Image
                       source={{ uri: e.thumbnail }}
@@ -86,9 +88,12 @@ export default function TabTwoScreen() {
                     </Text>
                     <Text className={'absolute bottom-0'}>{e.title}</Text>
                   </View>
-                </>
-              ))
-            : <Text>Loading...</Text>}
+                </Link>
+              </>
+            ))
+          ) : (
+            <Text>Loading...</Text>
+          )}
         </View>
       </ScrollView>
     </>
